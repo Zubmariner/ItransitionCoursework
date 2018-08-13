@@ -1,0 +1,12 @@
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\bin\Debug\netcoreapp2.0\iCoursework.deps.json
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\bin\Debug\netcoreapp2.0\iCoursework.runtimeconfig.json
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\bin\Debug\netcoreapp2.0\iCoursework.runtimeconfig.dev.json
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\bin\Debug\netcoreapp2.0\iCoursework.dll
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\bin\Debug\netcoreapp2.0\iCoursework.pdb
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.csprojAssemblyReference.cache
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.csproj.CoreCompileInputs.cache
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.AssemblyInfoInputs.cache
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.AssemblyInfo.cs
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.dll
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.pdb
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

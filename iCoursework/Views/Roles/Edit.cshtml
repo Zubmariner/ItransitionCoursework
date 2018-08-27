@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model iCoursework.Models.ChangeRoleViewModel
+
+<head>
+    <script type="text/javascript" src="@Url.Content("~/lib/jquery/dist/jquery.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function checkAll() {
+            $("#CheckParent").click(function () {
+                $(".CheckChild").prop("checked", this.checked);
+            });
+
+            $('.CheckChild').click(function () {
+                if ($('.CheckChild:checked').length == $('.CheckChild').length) {
+                    $('#CheckParent').prop('checked', true);
+                } else {
+                    $('#CheckParent').prop('checked', false);
+                }
+            });
+        });
+    </script>
+</head>
+
+<h2>Изменение ролей для пользователя @Model.UserEmail</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="userId" value="@Model.UserId" />
+    <div class="form-group">
+        <table class="table table-bordered">
+            <tr>
+                <th><input type="checkbox" id="CheckParent" /></th>
+                <th>Role name</th>
+            </tr>
+            @foreach (IdentityRole role in Model.AllRoles)
+            {
+                <tr>
+                    <td><input type="checkbox" class="CheckChild" name="roles" value="@role.Name"
+                               @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "")/></td>
+                    <td>@role.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

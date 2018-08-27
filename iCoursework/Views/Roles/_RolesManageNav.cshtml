@@ -1,0 +1,8 @@
+﻿@using iCoursework.Views.Roles
+@inject SignInManager<ApplicationUser> SignInManager
+
+<ul class="nav nav-pills nav-stacked">
+    <li class="@RolesPages.UserListNavClass(ViewContext)"><a asp-action="UserList">User List</a></li>
+    <li class="@RolesPages.IndexNavClass(ViewContext)"><a asp-action="Index">Role List</a></li>
+</ul>
+

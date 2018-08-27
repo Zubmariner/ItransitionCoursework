@@ -1,0 +1,40 @@
+﻿@model Instruction
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "AddInstruction";
+}
+
+<h2>AddInstruction</h2>
+
+<h4>Instruction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddInstruction" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">@Localizer["InstructionName"]</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">@Localizer["InstructionDescription"]</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label">Category</label>
+                <select asp-for="Category" class="form-control" asp-items="ViewBag.Categories"></select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="InstructionList">Back to List</a>
+</div>
+

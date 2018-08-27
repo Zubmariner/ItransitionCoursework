@@ -1,0 +1,25 @@
+﻿@inject IViewLocalizer Localizer
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Localizer["Manage"]</h2>
+
+<div>
+    <h4>@Localizer["Change settings"]</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            @await Html.PartialAsync("_RolesManageNav")
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+

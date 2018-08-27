@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using iCoursework.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using iCoursework.Models;
 
 namespace iCoursework.Data
 {
@@ -22,5 +18,12 @@ namespace iCoursework.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<Instruction> Instructions { get; set; }
+        public DbSet<Step> Steps { get; set; }
+        public DbSet<Comment> InstructionComments { get; set; }
+        public DbSet<Like> CommentLikes { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

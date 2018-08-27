@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Category> 
+@{
+    ViewData["Title"] = "FinishAddInstruction";
+    var categories = Model.ToList();
+    categories.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+}
+
+<h2>FinishAddInstruction</h2>
+
+<div class="form-group">
+    <form asp-action="FinishAddInstruction" method="post">
+        <label class="control-label">Category</label>
+        <select class="form-control">
+            @foreach (var category in categories)
+            {
+                <option>@category.Name</option>
+            }
+        </select>
+        <div class="form-group">
+            <input type="submit" value="Set" class="btn btn-default" />
+        </div>
+        <span class="text-danger"></span>
+    </form>
+</div>
+

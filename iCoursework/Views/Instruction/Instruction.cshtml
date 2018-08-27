@@ -1,0 +1,116 @@
+﻿@model Instruction
+@{
+    ViewData["Title"] = Model.Name;
+    var instruction = Model;
+    var steps = instruction.Steps.ToList();
+    steps.Sort((x, y) => x.Index.CompareTo(y.Index));
+    var comments = instruction.Comments.ToList();
+    comments.Sort((x, y) => y.Time.CompareTo(x.Time));
+}
+
+<table class="table">
+    <tr>
+        <td style="width: 480px; padding: 0">
+            <div id="myCarousel_@instruction.Id" class="carousel" data-ride="carousel" data-interval="6000" style="width: 480px; height: 372px">
+                <ol class="carousel-indicators">
+                    @foreach (var step in steps)
+                    {
+                        var active = step.Index == 0 ? "active" : "";
+                        <li data-target="#myCarousel_@instruction.Id" data-slide-to="@instruction.Steps.IndexOf(step)" class="@active"></li>
+                    }
+                </ol>
+                <div class="carousel-inner" role="listbox" style="width: 480px; height: 372px">
+                    @foreach (var step in steps)
+                    {
+                        var active = step.Index == 0 ? "active" : "";
+                        <div class="item @active">
+                            <table class="table table-condensed" style="border-width: 0">
+                                <tr>
+                                    <td style="text-align: center"><h4>№ @(step.Index + 1) — @step.Title</h4></td>
+                                </tr>
+                                <tr>
+                                    @{
+                                        var stepText = step.Text == null ? "" : step.Text.Length > 120 ?
+                                            step.Text.Substring(0, 120).LastIndexOf(' ') != -1 ?
+                                                step.Text.Substring(0, step.Text.Substring(0, 120).LastIndexOf(' ')) + "…" :
+                                                step.Text.Substring(0, 120) + "…" :
+                                            step.Text;
+                                    }
+                                    <td style="padding: 0 15px;text-indent: 1.5rem; word-break:break-all"><small>@stepText
+                                        <a asp-controller="Instruction" asp-action="Instruction" asp-route-id="@instruction.Id">Подробнее</a></small></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px 0 0">
+                                        @{
+                                            var image = instruction.Steps.IndexOf(step) == 0 ? "Windows10.png" : instruction.Steps.IndexOf(step) == 1 ? "Kenny unhooded.png" : "Ludens.png";
+                                        }
+                                        <img src="~/images/@image" style="height: 270px" alt="Step№@(instruction.Steps.IndexOf(step))Image" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                </div>
+                <a class="left carousel-control" href="#myCarousel_@instruction.Id" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel_@instruction.Id" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </td>
+        <td style="background-color: #708090; padding: 0">
+            <table class="table" style="height: 100%">
+                <tr style="height: 80%">
+                    <td style="padding: 4px">
+                        <form asp-controller="Instruction" asp-action="InstructionList" asp-route-id="@instruction.Category.Id" method="get">
+                            <button type="submit" class="btn btn-info btn-xs">
+                                @instruction.Category.Name
+                            </button>
+                        <button type="submit" class="btn btn-xs btn-link" style="text-decoration: none; color: whitesmoke; font-size: 1.5rem" formaction="@Url.Action("Instruction", "Instruction", new {id = instruction.Id})">
+                            <strong>@instruction.Name</strong>
+                        </button> — <small>@instruction.Description</small>
+                        
+                        </form>
+                    </td>
+                </tr>
+                <tr style="height: 100%" class="modal-title">
+                    <td style="padding: 2px">
+                        @for (var i = 0; i < 5; i++)
+                        {
+                            <span class="label label-primary"><button class="btn btn-link btn-xs" style="color: aliceblue"><small>#Default</small></button></span>
+                        }
+                    </td>
+                </tr>
+                    @{
+                         var startComment = Math.Min(5, comments.Count) - 1;
+                         for (var i = startComment; i > -1; i--)
+                         {
+                             
+                             <tr>
+                                 <td style="background-color: rgba(255, 255, 255, 0.5); color: black">
+                                    <strong>@comments[i].Author.UserName</strong> – @comments[i].Text
+                                 </td>
+                                     <td style="padding-left: 5px; vertical-align: central">
+                                         <form asp-action="LikeComment" asp-controller="Instruction" asp-all-route-data="@{new Dictionary<string, string> { { "commentId", comments[i].Id }, { "userId", ViewBag.CurrentUserId } }}">
+                                             <button class="glyphicon glyphicon-heart" style="color: red; background-color: inherit; border-width: 0"></button>
+                                             @comments[i].Likes.Count
+                                         </form>
+                                     </td>
+                             </tr>
+                         }
+                    }
+                             <tr>
+                                 <td style="padding: 0" colspan="2">
+                                     <form asp-controller="Instruction" asp-action="AddComment" asp-route-instructionId="@instruction.Id">
+                                         @Html.Partial("AddComment", new Comment())
+                                     </form>
+                                 </td>
+                             </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<br/>

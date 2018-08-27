@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using iCoursework.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +15,7 @@ using Microsoft.Extensions.Options;
 using iCoursework.Models;
 using iCoursework.Models.AccountViewModels;
 using iCoursework.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace iCoursework.Controllers
 {
@@ -22,17 +25,20 @@ namespace iCoursework.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _userContext;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext userContext,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userContext = userContext;
             _emailSender = emailSender;
             _logger = logger;
         }
@@ -422,6 +428,49 @@ namespace iCoursework.Controllers
             AddErrors(result);
             return View();
         }
+        
+        [HttpPost]
+        public IActionResult DeleteUser(IFormCollection formCollection)
+        {
+            string[] ids = formCollection["userId"].ToString().Split(new char[] { ',' });
+            var currentUserId = _userManager.GetUserAsync(HttpContext.User).Result.Id;
+            var isThereCurrentUser = false;
+            foreach (string id in ids)
+            {
+                if (id == currentUserId) isThereCurrentUser = true;
+                _userContext.Users.Remove(_userContext.Users.Find(id));
+            }
+            _userContext.SaveChanges();
+            return isThereCurrentUser ? RedirectToAction("Logout", "Account") : RedirectToAction("UserList", "Roles");
+        }
+        
+        [HttpPost]
+        public IActionResult BlockUser(IFormCollection formCollection)
+        {
+            string[] ids = formCollection["userId"].ToString().Split(new char[] { ',' });
+            var currentUserId = _userManager.GetUserAsync(HttpContext.User).Result.Id;
+            var isThereCurrentUser = false;
+            foreach (string id in ids)
+            {
+                if (id == currentUserId) isThereCurrentUser = true;
+                _userContext.Users.Find(id).IsBlocked = true;
+            }
+            _userContext.SaveChanges();
+            return isThereCurrentUser ? RedirectToAction("Logout", "Account") : RedirectToAction("UserList", "Roles");
+        }
+        
+        [HttpPost]
+        public IActionResult UnblockUser(IFormCollection formCollection)
+        {
+            string[] ids = formCollection["userId"].ToString().Split(new char[] { ',' });
+            foreach (string id in ids)
+            {
+                _userContext.Users.Find(id).IsBlocked = false;
+            }
+            _userContext.SaveChanges();
+            return RedirectToAction("UserList", "Roles");
+        }
+
 
         [HttpGet]
         [AllowAnonymous]

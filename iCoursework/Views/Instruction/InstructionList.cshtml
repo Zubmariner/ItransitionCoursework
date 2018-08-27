@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Instruction>
+@{
+    ViewData["Title"] = "InstructionList";
+    var instructions = Model.ToList();
+    instructions.Sort((x, y) => y.Time.CompareTo(x.Time));
+}
+
+<body>
+    <form method="get">
+        <div>
+            @foreach (var instruction in instructions)
+            {
+                @Html.Partial("Instruction", instruction)
+            }
+        </div>
+    </form>
+</body>

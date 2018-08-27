@@ -5,11 +5,51 @@
     <UserSecretsId>aspnet-iCoursework-DA0E7819-ED4B-426A-883B-9647CC200B6C</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Remove="Migrations\20180817154722_initial.cs" />
+    <Compile Remove="Migrations\20180817154722_initial.Designer.cs" />
+    <Compile Remove="Migrations\20180820080235_Second.cs" />
+    <Compile Remove="Migrations\20180820080235_Second.Designer.cs" />
+    <Compile Remove="Migrations\20180820080906_InitializeDb.cs" />
+    <Compile Remove="Migrations\20180820080906_InitializeDb.Designer.cs" />
+    <Compile Remove="Migrations\20180822110940_InitDb.cs" />
+    <Compile Remove="Migrations\20180822110940_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180822161515_InitDb.cs" />
+    <Compile Remove="Migrations\20180822161515_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180823102008_InitDb.cs" />
+    <Compile Remove="Migrations\20180823102008_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180823120927_InitDb.cs" />
+    <Compile Remove="Migrations\20180823120927_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180823123549_InitDb.cs" />
+    <Compile Remove="Migrations\20180823123549_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180823133402_InitDb.cs" />
+    <Compile Remove="Migrations\20180823133402_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180824125755_InitDb.cs" />
+    <Compile Remove="Migrations\20180824125755_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180824144000_StepTitle.cs" />
+    <Compile Remove="Migrations\20180824144000_StepTitle.Designer.cs" />
+    <Compile Remove="Migrations\20180825075355_InitDb.cs" />
+    <Compile Remove="Migrations\20180825075355_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180825080647_InitDb.cs" />
+    <Compile Remove="Migrations\20180825080647_InitDb.Designer.cs" />
+    <Compile Remove="Migrations\20180826073820_BlockUsers.cs" />
+    <Compile Remove="Migrations\20180826073820_BlockUsers.Designer.cs" />
+    <Compile Remove="Migrations\20180826083112_ImageBytes.cs" />
+    <Compile Remove="Migrations\20180826083112_ImageBytes.Designer.cs" />
+    <Compile Remove="Migrations\20180826135038_Tags.cs" />
+    <Compile Remove="Migrations\20180826135038_Tags.Designer.cs" />
+    <Compile Remove="Migrations\20180826153014_StepIndex.cs" />
+    <Compile Remove="Migrations\20180826153014_StepIndex.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AspNet.Security.OAuth.Vkontakte" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
   </ItemGroup>
@@ -18,6 +58,10 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>

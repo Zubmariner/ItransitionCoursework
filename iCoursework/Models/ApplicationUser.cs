@@ -9,5 +9,8 @@ namespace iCoursework.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
+        public bool IsBlocked { get; set; } = false;
+        public virtual IList<Instruction> Instructions { get; set; } = new List<Instruction>();
+        public virtual IList<Like> Likes { get; set; } = new List<Like>();
     }
 }

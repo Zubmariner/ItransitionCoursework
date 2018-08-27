@@ -1,12 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - iCoursework</title>
+    
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-darkly.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -30,9 +38,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">@Localizer["About"]</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">@Localizer["Contact"]</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -42,7 +49,26 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - iCoursework</p>
+            <div class="navbar-collapse">
+                &copy; 2018 - iCoursework
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-area="" asp-controller="Roles" asp-action="UserList" method="get" style="margin-left: 10px; color:lightgrey">userlist</a>
+                }
+                @{
+                    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                }
+                <form asp-controller="Home" asp-action="SetLanguage"
+                      asp-route-returnUrl="@Context.Request.Path"
+                      method="post" class="form-horizontal navbar-right">
+                    @Localizer["Language:"]&nbsp;
+                    <select name="culture" onchange="this.form.submit();" class="btn btn-xs dropdown-toggle"
+                            style="color: black" asp-for="@requestCulture.RequestCulture.UICulture.Name">
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                </form>
+            </div>
         </footer>
     </div>
 

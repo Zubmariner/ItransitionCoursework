@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="118451d0-792f-4123-a20b-c237a2357f10" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.vs/iCoursework/DesignTimeBuild/.dtbcache" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/iCoursework/DesignTimeBuild/.dtbcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/iCoursework/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/iCoursework/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/iCoursework/v15/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/iCoursework/v15/Server/sqlite3/storage.ide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/iCoursework/v15/Server/sqlite3/storage.ide-shm" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/iCoursework/v15/Server/sqlite3/storage.ide-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/iCoursework/v15/Server/sqlite3/storage.ide-wal" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/iCoursework/v15/Server/sqlite3/storage.ide-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Data/Migrations/00000000000000_CreateIdentitySchema.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Data/Migrations/00000000000000_CreateIdentitySchema.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Data/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Home/About.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Home/About.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Manage/SetPassword.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Manage/SetPassword.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Manage/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Manage/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Manage/_ManageNav.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Manage/_ManageNav.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/Shared/_LoginPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/Views/_ViewImports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/Views/_ViewImports.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.dll" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/iCoursework.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/iCoursework.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/iCoursework.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/iCoursework.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/UserSecretsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/UserSecretsAssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.dll" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/Debug/netcoreapp2.0/iCoursework.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/iCoursework.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/iCoursework.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/iCoursework.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/iCoursework.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCoursework/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/iCoursework/obj/project.assets.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="InstructionController.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iCoursework/Controllers/InstructionController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+              <folding>
+                <marker date="1534929997154" expanded="true" signature="6:114" ph="..." />
+                <marker date="1534929997154" expanded="true" signature="150:2510" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="204:2508" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="347:412" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="461:551" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="601:691" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="779:873" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="962:1611" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="1061:1562" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="1153:1382" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="1670:1773" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="1853:2502" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="1962:2465" ph="{...}" />
+                <marker date="1534929997154" expanded="true" signature="2055:2199" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddSteps.cshtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1534869330507" expanded="true" signature="24:64" ph="@..." />
+                <marker date="1534869330507" expanded="true" signature="117:989" ph="&lt;div.../&gt;" />
+                <marker date="1534869330507" expanded="true" signature="139:982" ph="&lt;div.../&gt;" />
+                <marker date="1534869330507" expanded="true" signature="170:971" ph="&lt;form.../&gt;" />
+                <marker date="1534869330507" expanded="true" signature="304:554" ph="&lt;div.../&gt;" />
+                <marker date="1534869330507" expanded="true" signature="567:820" ph="&lt;div.../&gt;" />
+                <marker date="1534869330507" expanded="true" signature="833:955" ph="&lt;div.../&gt;" />
+                <marker date="1534869330507" expanded="true" signature="991:1056" ph="&lt;div.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageController.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iCoursework/Controllers/ManageController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="412" column="20" selection-start-line="412" selection-start-column="12" selection-end-line="412" selection-end-column="20" />
+              <folding>
+                <marker date="1534076371184" expanded="true" signature="6:471" ph="..." />
+                <marker date="1534076371184" expanded="true" signature="506:20248" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="608:20246" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="1338:1550" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="1688:2276" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="1790:1932" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="1989:2232" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="2400:3717" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="2447:2511" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="2604:2746" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="2821:3148" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="2972:3134" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="3247:3593" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="3410:3579" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="3857:4636" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="3904:3968" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="4061:4203" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="4713:5281" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="4815:4957" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="5061:5151" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="5423:6345" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="5470:5534" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="5627:5769" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="5942:6055" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="6419:6987" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="6521:6663" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="6767:6860" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="7123:7926" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="7170:7234" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="7327:7469" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="7614:7724" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="8003:8781" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="8105:8247" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="8904:9458" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="9538:10616" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="9640:9782" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="9893:10057" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="10164:10322" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="10752:11508" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="10854:10996" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="11140:11300" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="11594:12206" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="11696:11838" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="11913:12162" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="12286:12776" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="12388:12530" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="12571:12720" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="12885:13586" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="12987:13129" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="13268:13417" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="13668:14079" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="13770:13912" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="14231:15637" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="14333:14475" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="14513:14644" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="14998:15212" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="15705:16059" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="15824:15926" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="16135:16208" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="16325:16894" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="16427:16569" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="16985:17515" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="17087:17229" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="17270:17448" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="17635:18474" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="17737:17879" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="17920:18093" ph="{...}" />
+                <marker date="1534076371184" expanded="false" signature="18484:20240" ph="Helpers" />
+                <marker date="1534076371184" expanded="true" signature="18554:18726" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="18613:18716" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="18783:19322" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="18940:19095" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="19152:19254" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="19401:19622" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="19739:20220" ph="{...}" />
+                <marker date="1534076371184" expanded="true" signature="19887:20068" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TempData</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/iCoursework/Controllers/InstructionController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/iCoursework/Controllers/ManageController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/iCoursework/Controllers/InstructionController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="85" />
+    <option name="y" value="25" />
+    <option name="width" value="1750" />
+    <option name="height" value="970" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="iCoursework (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="iCoursework (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="iCoursework" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="iCoursework (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="iCoursework" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Controllers" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="iCoursework (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="iCoursework" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Views" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="iCoursework (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="iCoursework" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Views" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Instruction" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project" editBeforeRun="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/iCoursework/bin/Debug/netcoreapp2.0/iCoursework.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/iCoursework" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <envs>
+        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+        <env name="ASPNETCORE_URLS" value="http://localhost:53175/" />
+      </envs>
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/iCoursework/iCoursework.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.0" />
+      <browser name="53e2f627-b1a7-4dfa-bfa7-5b83cc034776" start="true" url="http://localhost:44363/" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="118451d0-792f-4123-a20b-c237a2357f10" name="Default" comment="" />
+      <created>1534929205309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1534929205309</updated>
+      <workItem from="1534929218118" duration="828000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="828000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="REST Client" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2181208" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml</url>
+          <line>12</line>
+          <properties documentPath="$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml" initialLine="12">
+            <startOffsets>
+              <startOffset value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="-1" />
+            </endOffsets>
+          </properties>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml</url>
+          <line>14</line>
+          <properties documentPath="$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml" initialLine="14">
+            <startOffsets>
+              <startOffset value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml</url>
+          <line>13</line>
+          <properties documentPath="$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml" initialLine="13">
+            <startOffsets>
+              <startOffset value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/iCoursework/Controllers/ManageController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="412" column="20" selection-start-line="412" selection-start-column="12" selection-end-line="412" selection-end-column="20" />
+          <folding>
+            <marker date="1534076371184" expanded="true" signature="6:471" ph="..." />
+            <marker date="1534076371184" expanded="true" signature="506:20248" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="608:20246" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="1338:1550" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="1688:2276" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="1790:1932" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="1989:2232" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="2400:3717" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="2447:2511" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="2604:2746" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="2821:3148" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="2972:3134" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="3247:3593" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="3410:3579" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="3857:4636" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="3904:3968" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="4061:4203" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="4713:5281" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="4815:4957" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="5061:5151" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="5423:6345" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="5470:5534" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="5627:5769" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="5942:6055" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="6419:6987" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="6521:6663" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="6767:6860" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="7123:7926" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="7170:7234" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="7327:7469" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="7614:7724" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="8003:8781" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="8105:8247" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="8904:9458" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="9538:10616" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="9640:9782" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="9893:10057" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="10164:10322" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="10752:11508" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="10854:10996" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="11140:11300" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="11594:12206" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="11696:11838" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="11913:12162" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="12286:12776" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="12388:12530" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="12571:12720" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="12885:13586" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="12987:13129" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="13268:13417" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="13668:14079" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="13770:13912" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="14231:15637" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="14333:14475" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="14513:14644" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="14998:15212" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="15705:16059" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="15824:15926" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="16135:16208" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="16325:16894" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="16427:16569" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="16985:17515" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="17087:17229" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="17270:17448" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="17635:18474" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="17737:17879" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="17920:18093" ph="{...}" />
+            <marker date="1534076371184" expanded="false" signature="18484:20240" ph="Helpers" />
+            <marker date="1534076371184" expanded="true" signature="18554:18726" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="18613:18716" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="18783:19322" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="18940:19095" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="19152:19254" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="19401:19622" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="19739:20220" ph="{...}" />
+            <marker date="1534076371184" expanded="true" signature="19887:20068" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iCoursework/Controllers/InstructionController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding>
+            <marker date="1534929997154" expanded="true" signature="6:114" ph="..." />
+            <marker date="1534929997154" expanded="true" signature="150:2510" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="204:2508" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="347:412" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="461:551" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="601:691" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="779:873" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="962:1611" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="1061:1562" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="1153:1382" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="1670:1773" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="1853:2502" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="1962:2465" ph="{...}" />
+            <marker date="1534929997154" expanded="true" signature="2055:2199" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iCoursework/Views/Instruction/AddSteps.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1534869330507" expanded="true" signature="24:64" ph="@..." />
+            <marker date="1534869330507" expanded="true" signature="117:989" ph="&lt;div.../&gt;" />
+            <marker date="1534869330507" expanded="true" signature="139:982" ph="&lt;div.../&gt;" />
+            <marker date="1534869330507" expanded="true" signature="170:971" ph="&lt;form.../&gt;" />
+            <marker date="1534869330507" expanded="true" signature="304:554" ph="&lt;div.../&gt;" />
+            <marker date="1534869330507" expanded="true" signature="567:820" ph="&lt;div.../&gt;" />
+            <marker date="1534869330507" expanded="true" signature="833:955" ph="&lt;div.../&gt;" />
+            <marker date="1534869330507" expanded="true" signature="991:1056" ph="&lt;div.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

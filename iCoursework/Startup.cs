@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using iCoursework.Data;
+﻿using iCoursework.Data;
 using iCoursework.Models;
 using iCoursework.Services;
-using Microsoft.AspNetCore.Authentication.Google;
-using AspNet.Security.OAuth.Vkontakte;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using System.Globalization;
+using System.Linq;
 
 namespace iCoursework
 {
@@ -28,6 +27,10 @@ namespace iCoursework
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -38,25 +41,42 @@ namespace iCoursework
             services.AddAuthentication()
                 .AddFacebook(facebookOptions =>
                 {
-                    facebookOptions.AppId = "2008154512573596";
-                    facebookOptions.AppSecret = "4ad3d51a343270e784a6311ef70b240a";
+                    facebookOptions.AppId = Configuration["Facebook:AppId"];
+                    facebookOptions.AppSecret = Configuration["Facebook:AppSecret"];
                 })
                 .AddGoogle(googleOptions =>
                 {
-                    googleOptions.ClientId = "955315305189-hkf4rt1neecpmuutauul0kbk5fc7c5uj.apps.googleusercontent.com";
-                    googleOptions.ClientSecret = "vcw8-SyilAxkp-gZy4M_Zh3u";
+                    googleOptions.ClientId = Configuration["Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["Google:ClientSecret"];
                 })
                 .AddVkontakte(vkontakeOptions =>
                 {
-                    vkontakeOptions.ClientId = "6658943";
-                    vkontakeOptions.ClientSecret = "jJWD6MA7kGfVFBuKUCzQ";
+                    vkontakeOptions.ClientId = Configuration["Vkontakte:ClientId"];
+                    vkontakeOptions.ClientSecret = Configuration["Vkontakte:ClientSecret"];
                     vkontakeOptions.Scope.Add("email");
                 });
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddMvc()
+                .AddDataAnnotationsLocalization()
+                .AddViewLocalization();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("ru")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +93,9 @@ namespace iCoursework
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
@@ -83,6 +106,8 @@ namespace iCoursework
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSession();
         }
     }
 }

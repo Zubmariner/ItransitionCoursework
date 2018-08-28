@@ -1,12 +1,28 @@
 ﻿@model Instruction
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = Model.Name;
     var instruction = Model;
     var steps = instruction.Steps.ToList();
     steps.Sort((x, y) => x.Index.CompareTo(y.Index));
     var comments = instruction.Comments.ToList();
     comments.Sort((x, y) => y.Time.CompareTo(x.Time));
 }
+
+<head>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#likeComment").click(function () {
+        
+
+                $.post("/Instruction/LikeComment",
+                    {
+                        commentId: $(this).parentElement.ID,
+                        userId: @ViewBag.CurrentUserId 
+                    });
+            });
+        });
+    </script>
+</head>
 
 <table class="table">
     <tr>
@@ -36,20 +52,21 @@
                                                 step.Text.Substring(0, 120) + "…" :
                                             step.Text;
                                     }
-                                    <td style="padding: 0 15px;text-indent: 1.5rem; word-break:break-all"><small>@stepText
-                                        <a asp-controller="Instruction" asp-action="Instruction" asp-route-id="@instruction.Id">Подробнее</a></small></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 10px 0 0">
-                                        @{
-                                            var image = instruction.Steps.IndexOf(step) == 0 ? "Windows10.png" : instruction.Steps.IndexOf(step) == 1 ? "Kenny unhooded.png" : "Ludens.png";
-                                        }
-                                        <img src="~/images/@image" style="height: 270px" alt="Step№@(instruction.Steps.IndexOf(step))Image" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    }
+                                    <td style="padding: 0 15px;text-indent: 1.5rem; word-break:break-all">
+                                        <small>
+                                            @stepText
+                                        <a asp-controller="Instruction" asp-action="Instruction" asp-route-id="@instruction.Id">Подробнее</a>
+                                    </small>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px 0 0; text-align: center">
+                                    <img src="~/images/@step.Image" style="height: 270px" alt="Step№@(instruction.Steps.IndexOf(step))Image" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                }
                 </div>
                 <a class="left carousel-control" href="#myCarousel_@instruction.Id" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -61,56 +78,89 @@
                 </a>
             </div>
         </td>
-        <td style="background-color: #708090; padding: 0">
+        <td style="background-color: rgba(255,255,255,0.5); padding: 0">
             <table class="table" style="height: 100%">
                 <tr style="height: 80%">
-                    <td style="padding: 4px">
+                    <td style="padding: 4px; background-color: rgba(255, 255, 255, 0.5)" colspan="4">
                         <form asp-controller="Instruction" asp-action="InstructionList" asp-route-id="@instruction.Category.Id" method="get">
                             <button type="submit" class="btn btn-info btn-xs">
-                                @instruction.Category.Name
+                                @Localizer[instruction.Category.Name]
                             </button>
-                        <button type="submit" class="btn btn-xs btn-link" style="text-decoration: none; color: whitesmoke; font-size: 1.5rem" formaction="@Url.Action("Instruction", "Instruction", new {id = instruction.Id})">
-                            <strong>@instruction.Name</strong>
-                        </button> — <small>@instruction.Description</small>
-                        
+                            <button type="submit" class="btn btn-xs btn-link" style="text-decoration: none; color: whitesmoke; font-size: 1.5rem" formaction="@Url.Action("Instruction", "Instruction", new {id = instruction.Id})">
+                                <strong>@instruction.Name</strong>
+                            </button> — <small>@instruction.Description</small>
+
                         </form>
                     </td>
                 </tr>
                 <tr style="height: 100%" class="modal-title">
-                    <td style="padding: 2px">
+                    <td style="padding: 2px; background-color: rgba(255, 255, 255, 0.5)" colspan="3">
                         @for (var i = 0; i < 5; i++)
                         {
                             <span class="label label-primary"><button class="btn btn-link btn-xs" style="color: aliceblue"><small>#Default</small></button></span>
                         }
                     </td>
+                    <td style="background-color: rgba(255, 255, 255, 0.5); width: 20%">
+                        <table>
+                            <tr>
+                                <td>@instruction.Rating</td>
+                                @for (var i = 0; i < 5; i++)
+                                {
+                                    <td>
+                                        <form asp-action="RateInstruction" asp-controller="Instruction" asp-all-route-data="@{new Dictionary<string, string> {{"instructionId", instruction.Id}, {"rate", (i + 1).ToString()}}}">
+                                            <button type="submit" class="btn btn-xs glyphicon glyphicon-star" style="color: @(instruction.Rating > i ? "#ffd700" : "#666666"); background-color: inherit; border-width: 0; outline: none"></button>
+                                        </form>
+                                    </td>
+                                }
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
-                    @{
-                         var startComment = Math.Min(5, comments.Count) - 1;
-                         for (var i = startComment; i > -1; i--)
-                         {
-                             
-                             <tr>
-                                 <td style="background-color: rgba(255, 255, 255, 0.5); color: black">
-                                    <strong>@comments[i].Author.UserName</strong> – @comments[i].Text
-                                 </td>
-                                     <td style="padding-left: 5px; vertical-align: central">
-                                         <form asp-action="LikeComment" asp-controller="Instruction" asp-all-route-data="@{new Dictionary<string, string> { { "commentId", comments[i].Id }, { "userId", ViewBag.CurrentUserId } }}">
-                                             <button class="glyphicon glyphicon-heart" style="color: red; background-color: inherit; border-width: 0"></button>
-                                             @comments[i].Likes.Count
-                                         </form>
-                                     </td>
-                             </tr>
-                         }
+                @{
+                    var startComment = Math.Min(5, comments.Count) - 1;
+                    for (var i = startComment; i > -1; i--)
+                    {
+
+                <tr>
+                    <td style="background-color: rgba(255, 255, 255, 0.5); color: black">
+                        @if (ViewBag.CurrentUserId == comments[i].Author.Id)
+                        {
+                            <form asp-action="DeleteComment" asp-controller="Instruction" asp-all-route-data="@{ new Dictionary<string, string> {{"commentId", comments[i].Id}}; }">
+                                <button class="glyphicon glyphicon-trash" style="background-color: inherit; border-width: 0"></button>
+                            </form>
+                        }
+                    </td>
+                    <td style="background-color: rgba(255, 255, 255, 0.5); color: black">
+                        <strong><a href="@Url.Action("UserPage", "Account", new {id = comments[i].Author.Id})">@comments[i].Author.UserName</a></strong> – @comments[i].Text
+                    </td>
+                    <td style="padding-left: 5px; vertical-align: central; background-color: rgba(255, 255, 255, 0.5)" colspan="2">
+                        <form asp-action="LikeComment" asp-controller="Instruction" asp-all-route-data="@{new Dictionary<string, string> {{"commentId", comments[i].Id}, {"userId", ViewBag.CurrentUserId}}}">
+                            @{
+                                var heartColor = "#ffb6c1";
+                                foreach (var like in comments[i].Likes)
+                                {
+                                    if (like.User.Id == ViewBag.CurrentUserId)
+                                    {
+                                        heartColor = "red";
+                                    }
+                                }
+                            }
+                            <button class="glyphicon glyphicon-heart likeComment" style="color: @heartColor; background-color: inherit; border-width: 0; outline: none"></button>
+                            @comments[i].Likes.Count
+                        </form>
+                    </td>
+                </tr>
                     }
-                             <tr>
-                                 <td style="padding: 0" colspan="2">
-                                     <form asp-controller="Instruction" asp-action="AddComment" asp-route-instructionId="@instruction.Id">
-                                         @Html.Partial("AddComment", new Comment())
-                                     </form>
-                                 </td>
-                             </tr>
+                }
+                <tr>
+                    <td style="padding: 0; background-color: rgba(255, 255, 255, 0.5)" colspan="4">
+                        <form asp-controller="Instruction" asp-action="AddComment" asp-route-instructionId="@instruction.Id">
+                            @Html.Partial("AddComment", new Comment())
+                        </form>
+                    </td>
+                </tr>
             </table>
         </td>
     </tr>
 </table>
-<br/>
+<br />

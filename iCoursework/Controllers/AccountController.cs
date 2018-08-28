@@ -16,6 +16,7 @@ using iCoursework.Models;
 using iCoursework.Models.AccountViewModels;
 using iCoursework.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace iCoursework.Controllers
 {
@@ -469,6 +470,16 @@ namespace iCoursework.Controllers
             }
             _userContext.SaveChanges();
             return RedirectToAction("UserList", "Roles");
+        }
+
+        [HttpGet]
+        public IActionResult UserPage(string id)
+        {
+            var x = id;
+            return View(_userContext.Users
+                .Include(u => u.Instructions).ThenInclude(i => i.Category)
+                .Include(u => u.Instructions).ThenInclude(i => i.Comments).ThenInclude(c => c.Likes)
+                .Single(u => u.Id == id));
         }
 
 

@@ -33,3 +33,5 @@ C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp
 C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.Resources.Views.Instruction.AddSteps.en.resources
 C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.Resources.Views.Instruction.AddSteps.ru.resources
 C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.csprojAssemblyReference.cache
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.Resources.Views.Instruction.Instruction.en.resources
+C:\Users\Jorji Costava\source\repos\iCoursework\iCoursework\obj\Debug\netcoreapp2.0\iCoursework.Resources.Views.Instruction.Instruction.ru.resources

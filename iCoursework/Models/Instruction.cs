@@ -7,8 +7,9 @@ namespace iCoursework.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public double Rating { get; set; }
         public DateTime Time { get; set; }
+        public double Rating { get; set; }
+        public int RatesCount { get; set; }
         public string Description { get; set; }
         //public virtual IList<Tag> Tags { get; set; } = new List<Tag>();
         public virtual Category Category { get; set; }

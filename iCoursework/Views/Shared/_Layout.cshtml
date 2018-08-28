@@ -14,8 +14,18 @@
     
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-darkly.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        @{
+            ViewBag.Theme = Context.Request.Cookies["theme"]?.ToString();
+            if (ViewBag.Theme == "dark")
+            {
+                <link id="themeStyle" rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+            }
+            else
+            {
+                <link id="themeStyle" rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-darkly.css" />
+            }
+        }
+        <link rel="stylesheet" href="~/css/site.css"/>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -58,6 +68,7 @@
                 @{
                     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
                 }
+
                 <form asp-controller="Home" asp-action="SetLanguage"
                       asp-route-returnUrl="@Context.Request.Path"
                       method="post" class="form-horizontal navbar-right">
@@ -68,6 +79,17 @@
                         <option value="en">English</option>
                     </select>
                 </form>
+
+                <div class="nav navbar-right" style="margin-right: 20px">
+                    @if (ViewBag.Theme == "dark")
+                    {
+                        <a class="fa-sun btn btn-info btn-xs" id="changeTheme" style="cursor: pointer">@Localizer["ChangeTheme"]</a>
+                    }
+                    else
+                    {
+                        <a class="fa-moon btn btn-info btn-xs" id="changeTheme" style="cursor: pointer">@Localizer["ChangeTheme"]</a>
+                    }
+                </div>
             </div>
         </footer>
     </div>

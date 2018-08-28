@@ -18,7 +18,7 @@ namespace iCoursework.Controllers
         private readonly IHostingEnvironment _appEnvironment;
 
         public InstructionController(
-            ApplicationDbContext context, 
+            ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
             IHostingEnvironment appEnvironment)
         {
@@ -26,18 +26,18 @@ namespace iCoursework.Controllers
             _userManager = userManager;
             _appEnvironment = appEnvironment;
         }
-        
-        
+
+
         [HttpGet]
         public IActionResult InstructionList(string id)
         {
             ViewBag.CurrentUserId = _userManager.GetUserAsync(HttpContext.User).Result.Id;
-            return View(id == null ? 
+            return View(id == null ?
                 _instructionDbContext.Instructions
-                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Comments).ThenInclude(i => i.Likes).Include(i => i.Author)
-                    .ToList() : 
+                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Comments).ThenInclude(i => i.Likes).ThenInclude(l => l.User).Include(i => i.Author)
+                    .ToList() :
                 _instructionDbContext.Instructions
-                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Comments).ThenInclude(i => i.Likes).Include(i => i.Author)
+                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Comments).ThenInclude(i => i.Likes).ThenInclude(l => l.User).Include(i => i.Author)
                     .Where(i => i.Category.Id == id).ToList());
         }
 
@@ -56,7 +56,7 @@ namespace iCoursework.Controllers
             ViewBag.Categories = categories;
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult AddInstruction(Instruction instruction, string categoryId)
         {
@@ -90,12 +90,17 @@ namespace iCoursework.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Comment(string commentId)
+        [HttpPost]
+        public IActionResult RateInstruction(string instructionId, string rate)
         {
-            return View(_instructionDbContext.InstructionComments.Include(c => c.Author).Single(c => c.Id == commentId));
+            var newRate = Convert.ToInt32(rate);
+            var instruction = _instructionDbContext.Instructions.Find(instructionId);
+            instruction.Rating = ((instruction.Rating * instruction.RatesCount++) + newRate) / instruction.RatesCount;
+            _instructionDbContext.SaveChanges();
+            return RedirectToAction("InstructionList");
         }
 
+        [HttpPost]
         public IActionResult LikeComment(string commentId, string userId)
         {
             var comment = _instructionDbContext.InstructionComments
@@ -121,10 +126,24 @@ namespace iCoursework.Controllers
         }
 
         [HttpPost]
+        public IActionResult DeleteComment(string commentId)
+        {
+            var comment = _instructionDbContext.InstructionComments.Include(c => c.Likes).Single(c => c.Id == commentId);
+            foreach (var like in comment.Likes)
+            {
+                like.User = null;
+                _instructionDbContext.CommentLikes.Remove(like);
+            }
+            _instructionDbContext.InstructionComments.Remove(comment);
+            _instructionDbContext.SaveChanges();
+            return RedirectToAction("InstructionList");
+        }
+
+        [HttpPost]
         public IActionResult AddSteps(Step step)
         {
             if (!ModelState.IsValid) return View(step);
-            var instructionId = (string) TempData["Instruction"];
+            var instructionId = (string)TempData["Instruction"];
             var instruction = _instructionDbContext.Instructions.Include(i => i.Steps).Single(i => i.Id == instructionId);
             step.Index = instruction.Steps.Count;
             instruction.Steps.Add(step);
@@ -135,7 +154,7 @@ namespace iCoursework.Controllers
         [HttpGet]
         public IActionResult FinishAddInstruction()
         {
-            return View( _instructionDbContext.Categories.ToList());
+            return View(_instructionDbContext.Categories.ToList());
         }
 
         [HttpPost]
@@ -153,13 +172,6 @@ namespace iCoursework.Controllers
             _instructionDbContext.Instructions.Find(instructionId).Comments.Add(comment);
             _instructionDbContext.SaveChanges();
             return RedirectToAction("InstructionList");
-        }
-
-        [HttpGet]
-        public IActionResult SelectCategory()
-        {
-            var x = _instructionDbContext.Categories.ToList();
-            return View(_instructionDbContext.Categories.ToList());
         }
     }
 }

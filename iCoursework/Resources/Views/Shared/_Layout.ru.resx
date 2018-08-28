@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>О нас</value>
   </data>
+  <data name="ChangeTheme" xml:space="preserve">
+    <value>Сменить тему</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Контакты</value>
   </data>

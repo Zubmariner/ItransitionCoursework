@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using iCoursework.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace iCoursework.Controllers
 {

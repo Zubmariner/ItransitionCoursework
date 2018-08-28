@@ -1,0 +1,56 @@
+﻿@model ApplicationUser
+@{
+    var instructions = Model.Instructions.ToList();
+}
+
+<h2 style="text-align: center">Страница пользователя @Model.UserName</h2>
+
+<table class="table">
+    <tr>
+        <td style="width: 25%; padding: 0">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="text-align: center">Инструкции</h3>
+                </div>
+                <div class="panel-body" style="padding: 0">
+                    <table class="table" style="padding: 0; margin: 0">
+                        <tr>
+                            <td>
+                                Количество: @Model.Instructions.Count
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>sdfs</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="text-align: center">Управление</h3>
+                </div>
+                <div class="panel-body" style="padding: 0">
+                    <table class="table" style="padding: 0; margin: 0">
+                        <tr>
+                            <td>
+                                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Открыть упралвение</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>sdfs</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+        <td>
+            <form asp-action="InstructionList" asp-controller="Instruction" 
+                  asp-all-route-data="@{new Dictionary<string, string> { { "categroryId", null }, { "userId", Model.Id } }}" method="get">
+                <button type="submit">Список инструкций пользователя</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+

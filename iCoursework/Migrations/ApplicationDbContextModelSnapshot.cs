@@ -120,6 +120,8 @@ namespace iCoursework.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("RatesCount");
+
                     b.Property<double>("Rating");
 
                     b.Property<string>("TagId");

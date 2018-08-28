@@ -43,5 +43,12 @@ namespace iCoursework.Controllers
             );
             return LocalRedirect(returnUrl);
         }
+
+        [HttpPost]
+        public IActionResult SetTheme(string theme)
+        {
+            Response.Cookies.Append("theme", theme, new CookieOptions { Expires = DateTime.Now.AddDays(30)});
+            return Ok();
+        }
     }
 }

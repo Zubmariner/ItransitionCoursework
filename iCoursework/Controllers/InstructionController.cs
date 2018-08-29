@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 
@@ -26,19 +29,49 @@ namespace iCoursework.Controllers
             _userManager = userManager;
             _appEnvironment = appEnvironment;
         }
-
-
+        
         [HttpGet]
-        public IActionResult InstructionList(string id)
+        public IActionResult InstructionList()
         {
+            var emptyInstructionsList = _instructionDbContext.Instructions.Where(i => i.Steps.Count == 0).ToList();
+            if (emptyInstructionsList.Count > 0)
+            {
+                foreach (var instruction in emptyInstructionsList)
+                {
+                    instruction.Steps.Add(new Step { Image = "What's the problem.jpg", Index = 0, Text = "What is the problem?", Title = "Just do it" });
+                }
+                _instructionDbContext.SaveChanges();
+            }
             ViewBag.CurrentUserId = _userManager.GetUserAsync(HttpContext.User).Result.Id;
-            return View(id == null ?
-                _instructionDbContext.Instructions
-                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Comments).ThenInclude(i => i.Likes).ThenInclude(l => l.User).Include(i => i.Author)
+            return View(_instructionDbContext.Instructions
+                .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Author).Include(i => i.Comments).ThenInclude(c => c.Likes).ThenInclude(l => l.User).Include(i => i.Author)
+                .ToList());
+        }
+
+        [HttpPost]
+        public IActionResult InstructionList(string categoryId, string userId)
+        {
+            var emptyInstructionsList = _instructionDbContext.Instructions.Where(i => i.Steps.Count == 0).ToList();
+            if (emptyInstructionsList.Count > 0)
+            {
+                foreach (var instruction in emptyInstructionsList)
+                {
+                    instruction.Steps.Add(new Step { Image = "What's the problem.jpg", Index = 0, Text = "What is the problem?", Title = "Just do it" });
+                }
+                _instructionDbContext.SaveChanges();
+            }
+            ViewBag.CurrentUserId = _userManager.GetUserAsync(HttpContext.User).Result.Id;
+            ViewBag.CurrentUserId = _userManager.GetUserAsync(HttpContext.User).Result.Id;
+            return View(categoryId == null ? userId == null ?
+                _instructionDbContext.Instructions //NOTHING
+                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Author).Include(i => i.Comments).ThenInclude(c => c.Likes).ThenInclude(l => l.User).Include(i => i.Author)
                     .ToList() :
-                _instructionDbContext.Instructions
-                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Comments).ThenInclude(i => i.Likes).ThenInclude(l => l.User).Include(i => i.Author)
-                    .Where(i => i.Category.Id == id).ToList());
+                _instructionDbContext.Instructions //USER
+                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Author).Include(i => i.Comments).ThenInclude(c => c.Likes).ThenInclude(l => l.User).Include(i => i.Author)
+                    .Where(i => i.Author.Id == userId).ToList() :
+                _instructionDbContext.Instructions //CATEGORY
+                    .Include(i => i.Steps).Include(i => i.Category).Include(i => i.Author).Include(i => i.Comments).ThenInclude(c => c.Likes).ThenInclude(l => l.User).Include(i => i.Author).Include(i => i.Comments).ThenInclude(c => c.Author)
+                    .Where(i => i.Category.Id == categoryId).ToList());
         }
 
         [HttpGet]
@@ -50,20 +83,22 @@ namespace iCoursework.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddInstruction()
+        public IActionResult AddInstruction(string userId)
         {
+            TempData["AuthorId"] = userId ?? _userManager.GetUserAsync(HttpContext.User).Result.Id;
             SelectList categories = new SelectList(_instructionDbContext.Categories, "Id", "Name");
             ViewBag.Categories = categories;
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddInstruction(Instruction instruction, string categoryId)
+        public IActionResult AddInstruction(Instruction instruction)
         {
             if (!ModelState.IsValid) return View(instruction);
+            var category = _instructionDbContext.Categories.Find(instruction.Category.Id);
             instruction.Time = DateTime.Now;
-            instruction.Author = _userManager.GetUserAsync(HttpContext.User).Result;
-            instruction.Category = _instructionDbContext.Categories.Find(categoryId);
+            instruction.Author = _instructionDbContext.Users.Find((string) TempData["AuthorId"]);
+            instruction.Category = category;
             _instructionDbContext.Add(instruction);
             _instructionDbContext.SaveChanges();
             TempData["Instruction"] = instruction.Id;
@@ -88,6 +123,24 @@ namespace iCoursework.Controllers
         public IActionResult AddSteps()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddSteps(Step step, IFormFile file)
+        {
+            if (!ModelState.IsValid) return View(step);
+            var instructionId = (string)TempData["Instruction"];
+            var instruction = _instructionDbContext.Instructions.Include(i => i.Steps).Single(i => i.Id == instructionId);
+            var path = "/images/" + file.FileName;
+            using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            step.Image = file.FileName;
+            step.Index = instruction.Steps.Count;
+            instruction.Steps.Add(step);
+            _instructionDbContext.SaveChanges();
+            return RedirectToAction("AddSteps");
         }
 
         [HttpPost]
@@ -137,18 +190,6 @@ namespace iCoursework.Controllers
             _instructionDbContext.InstructionComments.Remove(comment);
             _instructionDbContext.SaveChanges();
             return RedirectToAction("InstructionList");
-        }
-
-        [HttpPost]
-        public IActionResult AddSteps(Step step)
-        {
-            if (!ModelState.IsValid) return View(step);
-            var instructionId = (string)TempData["Instruction"];
-            var instruction = _instructionDbContext.Instructions.Include(i => i.Steps).Single(i => i.Id == instructionId);
-            step.Index = instruction.Steps.Count;
-            instruction.Steps.Add(step);
-            _instructionDbContext.SaveChanges();
-            return RedirectToAction("AddSteps");
         }
 
         [HttpGet]

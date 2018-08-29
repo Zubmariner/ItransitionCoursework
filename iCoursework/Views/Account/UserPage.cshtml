@@ -1,56 +1,48 @@
 ﻿@model ApplicationUser
+@inject UserManager<ApplicationUser> UserManager
 @{
     var instructions = Model.Instructions.ToList();
 }
 
 <h2 style="text-align: center">Страница пользователя @Model.UserName</h2>
 
-<table class="table">
-    <tr>
-        <td style="width: 25%; padding: 0">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title" style="text-align: center">Инструкции</h3>
-                </div>
-                <div class="panel-body" style="padding: 0">
-                    <table class="table" style="padding: 0; margin: 0">
-                        <tr>
-                            <td>
-                                Количество: @Model.Instructions.Count
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>sdfs</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title" style="text-align: center">Управление</h3>
-                </div>
-                <div class="panel-body" style="padding: 0">
-                    <table class="table" style="padding: 0; margin: 0">
-                        <tr>
-                            <td>
-                                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Открыть упралвение</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>sdfs</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </td>
-        <td>
-            <form asp-action="InstructionList" asp-controller="Instruction" 
-                  asp-all-route-data="@{new Dictionary<string, string> { { "categroryId", null }, { "userId", Model.Id } }}" method="get">
-                <button type="submit">Список инструкций пользователя</button>
+<div class="col-md-3">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align: center">Инструкции</h3>
+        </div>
+        <div class="panel-body" style="padding: 0">
+            <form asp-action="InstructionList" asp-controller="Instruction"
+                  asp-all-route-data="@{new Dictionary<string, string> { { "categoryId", null }, { "userId", Model.Id } }}" method="post">
+                <a asp-area="" class="list-group-item">
+                    Количество: <span class="badge">@Model.Instructions.Count</span>
+                </a>
+            
             </form>
-        </td>
-    </tr>
-</table>
+            @if (Model.Id == UserManager.GetUserId(User) || User.IsInRole("Admin"))
+            {
+                <a asp-area="" asp-controller="Instruction" asp-action="AddInstruction"
+                   asp-all-route-data="@{new Dictionary<string, string> {{"userId", Model.Id}}}"
+                   method="get" class="list-group-item">
+                    Добавить инструкцию
+                </a>
+            }
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align: center">Управление</h3>
+        </div>
+        <div class="panel-body" style="padding: 0">
+            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" class="list-group-item">Открыть управление</a>
+        </div>
+    </div>
+</div>
+<form asp-action="InstructionList" asp-controller="Instruction"
+      asp-all-route-data="@{new Dictionary<string, string> { { "categoryId", null }, { "userId", Model.Id } }}" method="post">
+    <button type="submit">Список инструкций пользователя</button>
+</form>
+
 
 
 

@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddSteps" method="post">
+        <form asp-action="AddSteps" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label">@Localizer["StepTitle"]</label>
@@ -23,19 +23,21 @@
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label">@Localizer["StepImage"]</label>
-                <input asp-for="Image" type="file" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <label class="control-label">@Localizer["StepImage"]</label>
+                <input type="file" class="form-control" name="file" id="file" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group" role="group" aria-label="First group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Second group">
+                        <button type="submit" asp-action="InstructionList" class="btn btn-default">Finish</button>
+                    </div>
+                </div>
             </div>
         </form>
 
     </div>
-</div>
-
-<div>
-    <a asp-action="InstructionList">Back to List</a>
 </div>
 

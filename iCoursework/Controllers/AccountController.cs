@@ -475,7 +475,6 @@ namespace iCoursework.Controllers
         [HttpGet]
         public IActionResult UserPage(string id)
         {
-            var x = id;
             return View(_userContext.Users
                 .Include(u => u.Instructions).ThenInclude(i => i.Category)
                 .Include(u => u.Instructions).ThenInclude(i => i.Comments).ThenInclude(c => c.Likes)

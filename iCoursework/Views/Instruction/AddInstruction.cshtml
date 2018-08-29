@@ -28,13 +28,16 @@
                 <span asp-validation-for="Category.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group" role="group" aria-label="First group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Second group">
+                        <button type="submit" asp-action="InstructionList" class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="InstructionList">Back to List</a>
 </div>
 

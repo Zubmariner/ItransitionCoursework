@@ -8,22 +8,6 @@
     comments.Sort((x, y) => y.Time.CompareTo(x.Time));
 }
 
-<head>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#likeComment").click(function () {
-        
-
-                $.post("/Instruction/LikeComment",
-                    {
-                        commentId: $(this).parentElement.ID,
-                        userId: @ViewBag.CurrentUserId 
-                    });
-            });
-        });
-    </script>
-</head>
-
 <table class="table">
     <tr>
         <td style="width: 480px; padding: 0">
@@ -81,8 +65,8 @@
         <td style="background-color: rgba(255,255,255,0.5); padding: 0">
             <table class="table" style="height: 100%">
                 <tr style="height: 80%">
-                    <td style="padding: 4px; background-color: rgba(255, 255, 255, 0.5)" colspan="4">
-                        <form asp-controller="Instruction" asp-action="InstructionList" asp-route-id="@instruction.Category.Id" method="get">
+                    <td style="padding: 4px; background-color: rgba(255, 255, 255, 0.5)" colspan="3">
+                        <form asp-controller="Instruction" asp-action="InstructionList" asp-all-route-data="@{new Dictionary<string, string> { { "categoryId", instruction.Category.Id }, { "userId", null } }}" method="post">
                             <button type="submit" class="btn btn-info btn-xs">
                                 @Localizer[instruction.Category.Name]
                             </button>
@@ -92,6 +76,7 @@
 
                         </form>
                     </td>
+                    <td style="background-color: rgba(255, 255, 255, 0.5)"><small>@instruction.Author <br/>@instruction.Time</small></td>
                 </tr>
                 <tr style="height: 100%" class="modal-title">
                     <td style="padding: 2px; background-color: rgba(255, 255, 255, 0.5)" colspan="3">
@@ -100,7 +85,7 @@
                             <span class="label label-primary"><button class="btn btn-link btn-xs" style="color: aliceblue"><small>#Default</small></button></span>
                         }
                     </td>
-                    <td style="background-color: rgba(255, 255, 255, 0.5); width: 20%">
+                    <td style="background-color: rgba(255, 255, 255, 0.5); width: 25%">
                         <table>
                             <tr>
                                 <td>@instruction.Rating</td>
@@ -139,10 +124,7 @@
                                 var heartColor = "#ffb6c1";
                                 foreach (var like in comments[i].Likes)
                                 {
-                                    if (like.User.Id == ViewBag.CurrentUserId)
-                                    {
-                                        heartColor = "red";
-                                    }
+                                    if (like.User.Id == ViewBag.CurrentUserId) { heartColor = "red"; }
                                 }
                             }
                             <button class="glyphicon glyphicon-heart likeComment" style="color: @heartColor; background-color: inherit; border-width: 0; outline: none"></button>
